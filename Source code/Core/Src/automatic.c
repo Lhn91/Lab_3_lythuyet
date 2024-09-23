@@ -12,7 +12,7 @@ void init_automatic(){
 void automatic_run(){
 	switch(status){
 	case INIT:
-		if(true){
+		if(1){
 		status = GREEN_RED;
 		setTimer1(5000);
 		timer2_flag = 1;

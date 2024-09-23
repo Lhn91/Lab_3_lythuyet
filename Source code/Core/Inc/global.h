@@ -26,6 +26,6 @@
 #define SETTING_RED_AMBER 25
 
 #include "main.h"
-extern int status = 0;
+extern int status;
 
 #endif /* INC_GLOBAL_H_ */

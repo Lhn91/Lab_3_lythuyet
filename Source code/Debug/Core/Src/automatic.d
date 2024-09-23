@@ -21,7 +21,8 @@ Core/Src/automatic.o: ../Core/Src/automatic.c ../Core/Inc/automatic.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
+ ../Core/Inc/software_timer.h ../Core/Inc/button.h
 ../Core/Inc/automatic.h:
 ../Core/Inc/global.h:
 ../Core/Inc/main.h:
@@ -47,3 +48,5 @@ Core/Src/automatic.o: ../Core/Src/automatic.c ../Core/Inc/automatic.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
+../Core/Inc/software_timer.h:
+../Core/Inc/button.h:
