@@ -11,6 +11,7 @@
 #include "main.h"
 #include "software_timer.h"
 #include "button.h"
+#include "traffic_led.h"
 
 void init_automatic();
 void automatic_run();

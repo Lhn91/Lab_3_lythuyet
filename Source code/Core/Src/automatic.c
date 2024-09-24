@@ -14,26 +14,26 @@ void automatic_run(){
 	case INIT:
 		if(1){
 		status = GREEN_RED;
-		setTimer1(5000);
-		timer2_flag = 1;
+		setTimer(5000,0);
+		timer_flag[1] = 1;
 		}
 	break;
 
 	case GREEN_RED:
 
 		traffic_green_red();
-		if(timer2_flag == 1){
+		if(timer_flag[1] == 1){
 			//update display (7seg)
-			setTimer2(1000);
+			setTimer(1000,1);
 		}
-		if(timer1_flag == 1){
+		if(timer_flag[0] == 1){
 			status = AMBER_RED;
-			setTimer1(2000);
+			setTimer(2000,0);
 		}
 		if(button1_flag == 1){
 			status = MAN_GREEN_RED;
 			button1_flag = 0;
-			setTimer2(10000);
+			setTimer(10000,1);
 		}
 		break;
 
