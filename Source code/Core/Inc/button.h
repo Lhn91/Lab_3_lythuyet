@@ -7,7 +7,11 @@
 
 #ifndef INC_BUTTON_H_
 #define INC_BUTTON_H_
-
-
+#include "main.h"
+#define NORMAL_STATE GPIO_PIN_SET //1
+#define PRESSED_STATE GPIO_PIN_RESET //0
+extern int button_flag;
+void getKeyInput();
+int isButtonPressed();
 
 #endif /* INC_BUTTON_H_ */

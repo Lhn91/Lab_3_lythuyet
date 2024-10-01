@@ -10,4 +10,5 @@
 
 #include "main.h"
 void display7seg(int num);
+void display7seg2(int num);
 #endif /* INC_SEVEN_SEG_H_ */

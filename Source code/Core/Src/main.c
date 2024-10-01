@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "global.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -199,27 +199,34 @@ static void MX_GPIO_Init(void)
 /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, S1_Pin|S2_Pin|S3_Pin|S4_Pin
-                          |S5_Pin|S6_Pin|S7_Pin|S7A8_Pin
-                          |S8_Pin|S9_Pin|S10_Pin|S11_Pin
-                          |S12_Pin|S13_Pin, GPIO_PIN_RESET);
+                          |S5_Pin|S6_Pin|S7_Pin|S8_Pin
+                          |S9_Pin|S10_Pin|S11_Pin|S12_Pin
+                          |S13_Pin|S14_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, R_Pin|G_Pin|Y_Pin|R1_Pin
                           |G1_Pin|Y1_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin : button_Pin */
+  GPIO_InitStruct.Pin = button_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(button_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : S1_Pin S2_Pin S3_Pin S4_Pin
-                           S5_Pin S6_Pin S7_Pin S7A8_Pin
-                           S8_Pin S9_Pin S10_Pin S11_Pin
-                           S12_Pin S13_Pin */
+                           S5_Pin S6_Pin S7_Pin S8_Pin
+                           S9_Pin S10_Pin S11_Pin S12_Pin
+                           S13_Pin S14_Pin */
   GPIO_InitStruct.Pin = S1_Pin|S2_Pin|S3_Pin|S4_Pin
-                          |S5_Pin|S6_Pin|S7_Pin|S7A8_Pin
-                          |S8_Pin|S9_Pin|S10_Pin|S11_Pin
-                          |S12_Pin|S13_Pin;
+                          |S5_Pin|S6_Pin|S7_Pin|S8_Pin
+                          |S9_Pin|S10_Pin|S11_Pin|S12_Pin
+                          |S13_Pin|S14_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -239,7 +246,10 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	timerRun();
+
+}
 /* USER CODE END 4 */
 
 /**

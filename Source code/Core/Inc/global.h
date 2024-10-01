@@ -26,6 +26,14 @@
 #define SETTING_RED_AMBER 25
 
 #include "main.h"
-extern int status;
+#include "software_timer.h"
+#include "button.h"
+#include "seven_seg.h"
+#include "automatic.h"
+#include "manual.h"
 
+extern int status;
+extern int count_green ;
+extern int count_red ;
+extern int count_amber ;
 #endif /* INC_GLOBAL_H_ */
