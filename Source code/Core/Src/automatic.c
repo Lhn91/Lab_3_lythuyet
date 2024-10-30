@@ -6,9 +6,10 @@
  */
 #include "automatic.h"
 int status = INIT;
-int count_green = 2;
-int count_red = 4;
-int count_amber = 1;
+int arr1[10] = {4,3,2,1,0,2,1,0,1,0};
+int arr2[10] = {2,1,0,1,0,4,3,2,1,0};
+int i = 0;
+int j = 0;
 void init_automatic(){
 
 }
@@ -17,25 +18,22 @@ void automatic_run(){
 	case INIT:
 		if(1){
 		status = GREEN_RED;
-		setTimer(5000,0);
+		setTimer(3000,0);
 		timer_flag[1] = 1;
 		}
 	break;
 
 	case GREEN_RED:
-
 		traffic_green_red();
 		if(timer_flag[1] == 1){
 			//update display (7seg)
-			display7seg(count_green);
-			display7seg2(count_red);
-			count_green--;
-			count_red--;
+			display7seg(arr1[i]);
+			display7seg2(arr2[j]);
+			i++;
+			j++;
 			setTimer(1000,1);
 		}
 		if(timer_flag[0] == 1){
-			count_green = 2;
-			count_red = 4;
 			status = AMBER_RED;
 			setTimer(2000,0);
 		}
@@ -48,26 +46,73 @@ void automatic_run(){
 		break;
 
 	case AMBER_RED:
-
 			traffic_amber_red();
 			if(timer_flag[1] == 1){
 				//update display (7seg)
+				display7seg(arr1[i]);
+			    display7seg2(arr2[j]);
+				i++;
+				j++;
 				setTimer(1000,1);
 			}
 			if(timer_flag[0] == 1){
-				status = AMBER_RED;
+				status = RED_GREEN;
+				setTimer(3000,0);
+			}
+			if(isButtonPressed() == 1){
+				status = MAN_AMBER_RED;
+				setTimer(10000,1);
+			}
+			break;
+
+	case RED_GREEN:
+
+			traffic_red_green();
+			if(timer_flag[1] == 1){
+				//update display (7seg)
+				display7seg(arr1[i]);
+							display7seg2(arr2[j]);
+			    i++;
+				j++;
+				setTimer(1000,1);
+			}
+			if(timer_flag[0] == 1){
+				status = RED_AMBER;
 				setTimer(2000,0);
 			}
 			if(isButtonPressed() == 1){
-				status = MAN_GREEN_RED;
+				status = MAN_RED_GREEN;
+				setTimer(10000,1);
+			}
+			break;
+
+	case RED_AMBER:
+			traffic_red_amber();
+			if(timer_flag[1] == 1){
+				//update display (7seg)
+				display7seg(arr1[i]);
+							display7seg2(arr2[j]);
+							i++;
+							j++;
+				setTimer(1000,1);
+			}
+			if(timer_flag[0] == 1){
+				status = GREEN_RED;
+				setTimer(3000,0);
+			}
+			if(isButtonPressed() == 1){
+				status = MAN_RED_AMBER;
 				setTimer(10000,1);
 			}
 			break;
 
 
-
 	default:
 		break;
+	}
 
+	if( i == 10 || j == 10){
+		i=0;
+		j=0;
 	}
 }

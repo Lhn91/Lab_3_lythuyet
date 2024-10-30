@@ -52,6 +52,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 Button_traffic_FSM.list \
 
+OBJCOPY_HEX += \
+Button_traffic_FSM.hex \
+
 
 # All Target
 all: main-build
@@ -75,12 +78,17 @@ Button_traffic_FSM.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DE
 	@echo 'Finished building: $@'
 	@echo ' '
 
+Button_traffic_FSM.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "Button_traffic_FSM.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) Button_traffic_FSM.elf Button_traffic_FSM.list Button_traffic_FSM.map default.size.stdout
+	-$(RM) Button_traffic_FSM.elf Button_traffic_FSM.hex Button_traffic_FSM.list Button_traffic_FSM.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
