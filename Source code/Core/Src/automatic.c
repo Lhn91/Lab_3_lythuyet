@@ -71,7 +71,7 @@ void automatic_run(){
 			if(timer_flag[1] == 1){
 				//update display (7seg)
 				display7seg(arr1[i]);
-							display7seg2(arr2[j]);
+				display7seg2(arr2[j]);
 			    i++;
 				j++;
 				setTimer(1000,1);

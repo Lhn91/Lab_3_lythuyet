@@ -12,14 +12,15 @@ int keyReg1[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 int keyReg2[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 int keyReg3[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 int TimerForKeyPressed = 200; //nhan de 2s moi xu li
+
 int isButtonPressed(){
 	for(int i = 0; i<3; i++){
 		if(button_flag[i] == 1){
 			button_flag[i] = 0;
 			return 1;
 		}
-		return 0;
 	}
+		return 0;
 }
 void subKeyProcess(int i){
 	button_flag[i] = 1;
@@ -31,11 +32,9 @@ void getKeyInput(){
  switch (i){
 	 case 0: keyReg2[0] = HAL_GPIO_ReadPin(button_GPIO_Port, button_Pin);
 		 break;
-	 case 1: keyReg2[1] = HAL_GPIO_ReadPin(b1_GPIO_Port, b1_Pin);
+	 case 1: keyReg2[1] = HAL_GPIO_ReadPin(b1_GPIO_Port,b1_Pin);
 		 break;
 	 case 2: keyReg2[2] = HAL_GPIO_ReadPin(b2_GPIO_Port, b2_Pin);
-		 break;
-	 default:
 		 break;
  }
  if((keyReg0[i] == keyReg1[i])&&(keyReg1[i] == keyReg2[i])){
