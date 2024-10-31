@@ -11,7 +11,9 @@ void manual_run() {
 			if (isButtonPressed(1)) {
 				setTimer(6000, 1);
 				status = MAN_AMBER_RED;
-			} else if (timer_flag[1] == 1) {
+			} else if(timer_flag[1] == 0 && isButtonPressed(2)){
+
+			}else if (timer_flag[1] == 1) {
 				setTimer(3000, 0);
 				status = GREEN_RED;
 			}
@@ -26,7 +28,9 @@ void manual_run() {
 			if (isButtonPressed(1)) {
 				status = MAN_RED_GREEN;
 				setTimer(6000, 1);
-			} else if (timer_flag[1] == 1) {
+			} else if(timer_flag[1] == 0 && isButtonPressed(2)){
+
+			}else if (timer_flag[1] == 1) {
 
 				setTimer(2000, 0);
 				status = GREEN_RED;
@@ -42,6 +46,9 @@ void manual_run() {
 			if (isButtonPressed(1)) {
 				status = MAN_RED_AMBER;
 				setTimer(6000, 1);
+			}
+			else if(timer_flag[1] == 0 && isButtonPressed(2)){
+
 			} else if (timer_flag[1] == 1) {
 
 				setTimer(3000, 0);
@@ -57,7 +64,11 @@ void manual_run() {
 			display7seg2(count_amber2);
 			if (isButtonPressed(1)) {
 				status = MAN_GREEN_RED;
-			} else if (timer_flag[1] == 1) {
+			}
+			else if(timer_flag[1] == 0 && isButtonPressed(2)){
+				//todo
+						}
+			else if (timer_flag[1] == 1) {
 				setTimer(2000, 0);
 				status = RED_AMBER;
 			}
