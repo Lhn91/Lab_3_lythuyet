@@ -10,7 +10,7 @@
 #include "main.h"
 #define NORMAL_STATE GPIO_PIN_SET //1
 #define PRESSED_STATE GPIO_PIN_RESET //0
-extern int button_flag;
+extern int button_flag[3];
 void getKeyInput();
 int isButtonPressed();
 

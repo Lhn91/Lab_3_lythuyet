@@ -36,4 +36,6 @@ extern int status;
 extern int count_green ;
 extern int i ;
 extern int j ;
+extern int arr1[10];
+extern int arr2[10];
 #endif /* INC_GLOBAL_H_ */
