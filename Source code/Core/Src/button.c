@@ -13,13 +13,11 @@ int keyReg2[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 int keyReg3[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 int TimerForKeyPressed = 200; //nhan de 2s moi xu li
 
-int isButtonPressed(){
-	for(int i = 0; i<3; i++){
-		if(button_flag[i] == 1){
-			button_flag[i] = 0;
+int isButtonPressed(int i){
+		if(button_flag[i-1] == 1){
+			button_flag[i-1] = 0;
 			return 1;
 		}
-	}
 		return 0;
 }
 void subKeyProcess(int i){

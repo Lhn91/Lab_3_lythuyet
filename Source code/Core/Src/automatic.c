@@ -40,7 +40,7 @@ void automatic_run(){
 			timer_flag[1] = 1;
 			setTimer(2000,0);
 		}
-		if(isButtonPressed() == 1){
+		if(isButtonPressed(1) == 1){
 			status = MAN_GREEN_RED;
 			display7seg(2);
 			display7seg2(4);
@@ -63,7 +63,7 @@ void automatic_run(){
 				timer_flag[1] = 1;
 				setTimer(3000,0);
 			}
-			if(isButtonPressed() == 1){
+			if(isButtonPressed(1) == 1){
 				status = MAN_AMBER_RED;
 				setTimer(10000,1);
 			}
@@ -85,7 +85,7 @@ void automatic_run(){
 				timer_flag[1] = 1;
 				setTimer(2000,0);
 			}
-			if(isButtonPressed() == 1){
+			if(isButtonPressed(1) == 1){
 				status = MAN_RED_GREEN;
 				setTimer(10000,1);
 			}
@@ -106,7 +106,7 @@ void automatic_run(){
 				timer_flag[1] = 1;
 				setTimer(3000,0);
 			}
-			if(isButtonPressed() == 1){
+			if(isButtonPressed(1) == 1){
 				status = MAN_RED_AMBER;
 				setTimer(10000,1);
 			}

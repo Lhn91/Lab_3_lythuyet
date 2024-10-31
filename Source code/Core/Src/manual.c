@@ -1,14 +1,14 @@
 #include "manual.h"
 
-/*void manual_run() {
+void manual_run() {
 	switch (status) {
 		case MAN_GREEN_RED:
 			traffic_green_red();
-			i = 0;
-			j = 0;
-			display7seg(arr1[i]);
-			display7seg2(arr2[j]);
-			if (isButtonPressed()) {
+			count_red2 = 4;
+			count_green1 = 2;
+			display7seg2(count_red2);
+			display7seg(count_green1);
+			if (isButtonPressed(1)) {
 				setTimer(6000, 1);
 				status = MAN_AMBER_RED;
 			} else if (timer_flag[1] == 1) {
@@ -19,11 +19,11 @@
 
 		case MAN_AMBER_RED:
 			traffic_amber_red();
-			i = 3;
-			j = 3;
-			display7seg(arr1[i]);
-			display7seg2(arr2[j]);
-			if (isButtonPressed()) {
+			count_amber1 = 1;
+			count_red2 = 1;
+			display7seg(count_amber1);
+			display7seg2(count_red2);
+			if (isButtonPressed(1)) {
 				status = MAN_RED_GREEN;
 				setTimer(6000, 1);
 			} else if (timer_flag[1] == 1) {
@@ -35,11 +35,11 @@
 
 		case MAN_RED_GREEN:
 			traffic_red_green();
-			i = 5;
-			j = 5;
-			display7seg(arr1[i]);
-			display7seg2(arr2[j]);
-			if (isButtonPressed()) {
+			count_red1 = 4;
+			count_green2 = 2;
+			display7seg(count_red1);
+			display7seg2(count_green2);
+			if (isButtonPressed(1)) {
 				status = MAN_RED_AMBER;
 				setTimer(6000, 1);
 			} else if (timer_flag[1] == 1) {
@@ -51,11 +51,11 @@
 
 		case MAN_RED_AMBER:
 			traffic_red_amber();
-			i = 8;
-			j = 8;
-			display7seg(arr1[i]);
-			display7seg2(arr2[j]);
-			if (isButtonPressed()) {
+			count_red1 = 1;
+			count_amber2 = 1;
+			display7seg(count_red1);
+			display7seg2(count_amber2);
+			if (isButtonPressed(1)) {
 				status = MAN_GREEN_RED;
 			} else if (timer_flag[1] == 1) {
 				setTimer(2000, 0);
@@ -63,4 +63,4 @@
 			}
 			break;
 	}
-}*/
+}
