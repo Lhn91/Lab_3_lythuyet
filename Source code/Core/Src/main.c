@@ -98,7 +98,7 @@ HAL_TIM_Base_Start_IT(&htim2);
   while (1)
   {
 	  automatic_run();
-	  manual_run();
+	  //manual_run();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -1,6 +1,6 @@
 #include "manual.h"
 
-void manual_run() {
+/*void manual_run() {
 	switch (status) {
 		case MAN_GREEN_RED:
 			traffic_green_red();
@@ -63,4 +63,4 @@ void manual_run() {
 			}
 			break;
 	}
-}
+}*/

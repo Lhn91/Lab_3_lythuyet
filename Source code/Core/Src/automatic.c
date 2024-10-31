@@ -6,10 +6,12 @@
  */
 #include "automatic.h"
 int status = INIT;
-int arr1[10] = {4,3,2,1,0,2,1,0,1,0};
-int arr2[10] = {2,1,0,1,0,4,3,2,1,0};
-int i = 0;
-int j = 0;
+int count_red1 = 4;
+int count_green1 = 2;
+int count_amber1 = 1;
+int count_red2 = 4;
+int count_green2 = 2;
+int count_amber2 =1;
 void init_automatic(){
 
 }
@@ -25,16 +27,17 @@ void automatic_run(){
 
 	case GREEN_RED:
 		traffic_green_red();
-		if(timer_flag[1] == 1){
+		if(timer_flag[1] == 1 && timer_flag[0] == 0){
 			//update display (7seg)
-			display7seg(arr1[i]);
-			display7seg2(arr2[j]);
-			i++;
-			j++;
+			display7seg(count_green1);
+			display7seg2(count_red2);
+			count_green1--;
+			count_red2--;
 			setTimer(1000,1);
 		}
 		if(timer_flag[0] == 1){
 			status = AMBER_RED;
+			timer_flag[1] = 1;
 			setTimer(2000,0);
 		}
 		if(isButtonPressed() == 1){
@@ -47,16 +50,17 @@ void automatic_run(){
 
 	case AMBER_RED:
 			traffic_amber_red();
-			if(timer_flag[1] == 1){
+			if(timer_flag[1] == 1 && timer_flag[0] == 0){
 				//update display (7seg)
-				display7seg(arr1[i]);
-			    display7seg2(arr2[j]);
-				i++;
-				j++;
+				display7seg(count_amber1);
+			    display7seg2(count_red2);
+			    count_amber1--;
+			    count_red2--;
 				setTimer(1000,1);
 			}
 			if(timer_flag[0] == 1){
 				status = RED_GREEN;
+				timer_flag[1] = 1;
 				setTimer(3000,0);
 			}
 			if(isButtonPressed() == 1){
@@ -68,16 +72,17 @@ void automatic_run(){
 	case RED_GREEN:
 
 			traffic_red_green();
-			if(timer_flag[1] == 1){
+			if(timer_flag[1] == 1&& timer_flag[0] == 0){
 				//update display (7seg)
-				display7seg(arr1[i]);
-				display7seg2(arr2[j]);
-			    i++;
-				j++;
+				display7seg(count_red1);
+				display7seg2(count_green2);
+				count_red1--;
+				count_green2--;
 				setTimer(1000,1);
 			}
 			if(timer_flag[0] == 1){
 				status = RED_AMBER;
+				timer_flag[1] = 1;
 				setTimer(2000,0);
 			}
 			if(isButtonPressed() == 1){
@@ -88,16 +93,17 @@ void automatic_run(){
 
 	case RED_AMBER:
 			traffic_red_amber();
-			if(timer_flag[1] == 1){
+			if(timer_flag[1] == 1&& timer_flag[0] == 0){
 				//update display (7seg)
-				display7seg(arr1[i]);
-							display7seg2(arr2[j]);
-							i++;
-							j++;
+				display7seg(count_red1);
+				display7seg2(count_amber2);
+				count_red1--;
+				count_amber2--;
 				setTimer(1000,1);
 			}
 			if(timer_flag[0] == 1){
 				status = GREEN_RED;
+				timer_flag[1] = 1;
 				setTimer(3000,0);
 			}
 			if(isButtonPressed() == 1){
@@ -111,8 +117,14 @@ void automatic_run(){
 		break;
 	}
 
-	if( i == 10 || j == 10){
-		i=0;
-		j=0;
+	if (count_red1 < 0 && count_green1 < 0 && count_amber1 < 0 &&
+	    count_red2 < 0 && count_green2 < 0 && count_amber2 < 0) {
+	    count_red1 = 4;
+	    count_green1 = 2;
+	    count_amber1 = 1;
+	    count_red2 = 4;
+	    count_green2 = 2;
+	    count_amber2 = 1;
 	}
+
 }
