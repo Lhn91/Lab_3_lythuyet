@@ -6,11 +6,11 @@
  */
 #include "button.h"
 #include "main.h"
-int button_flag[3] = {0,0,0};
-int keyReg0[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
-int keyReg1[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
-int keyReg2[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
-int keyReg3[3] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int button_flag[4] = {0,0,0,0};
+int keyReg0[4] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int keyReg1[4] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int keyReg2[4] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int keyReg3[4] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 int TimerForKeyPressed = 200; //nhan de 2s moi xu li
 
 int isButtonPressed(int i){
@@ -24,7 +24,7 @@ void subKeyProcess(int i){
 	button_flag[i] = 1;
 }
 void getKeyInput(){
-	for(int i = 0; i<3;i++){
+	for(int i = 0; i<4;i++){
  keyReg0[i] = keyReg1[i];
  keyReg1[i] = keyReg2[i];
  switch (i){
@@ -34,6 +34,7 @@ void getKeyInput(){
 		 break;
 	 case 2: keyReg2[2] = HAL_GPIO_ReadPin(b2_GPIO_Port, b2_Pin);
 		 break;
+	 case 3: keyReg2[3] = HAL_GPIO_ReadPin(b3_GPIO_Port, b3_Pin);
  }
  if((keyReg0[i] == keyReg1[i])&&(keyReg1[i] == keyReg2[i])){
 	 if(keyReg3[i] != keyReg2[i]){

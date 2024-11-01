@@ -32,6 +32,6 @@
 #include "manual.h"
 #include "setting.h"
 extern int status;
-
+extern int count_buffer[6];
 extern int count_buffer_root[6];
 #endif /* INC_GLOBAL_H_ */

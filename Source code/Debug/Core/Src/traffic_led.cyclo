@@ -2,3 +2,5 @@
 ../Core/Src/traffic_led.c:17:6:traffic_amber_red	1
 ../Core/Src/traffic_led.c:27:6:traffic_red_green	1
 ../Core/Src/traffic_led.c:37:6:traffic_red_amber	1
+../Core/Src/traffic_led.c:47:6:traffic_amber_amber	1
+../Core/Src/traffic_led.c:57:6:traffic_green_green	1

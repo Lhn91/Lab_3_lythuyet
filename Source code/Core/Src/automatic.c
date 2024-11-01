@@ -35,7 +35,7 @@ void automatic_run(){
 		if(timer_flag[0] == 1){
 			status = AMBER_RED;
 			setTimer(1000,1);
-			setTimer(2000,0);
+			setTimer((count_buffer_root[2]+1)*1000,0);
 		}
 		if(isButtonPressed(1) == 1){
 			status = MAN_GREEN_RED;
@@ -58,7 +58,7 @@ void automatic_run(){
 			if(timer_flag[0] == 1){
 				status = RED_GREEN;
 				setTimer(1000,1);
-				setTimer(3000,0);
+				setTimer((count_buffer_root[1]+1)*1000,0);
 			}
 			if(isButtonPressed(1) == 1){
 				status = MAN_AMBER_RED;
@@ -80,7 +80,7 @@ void automatic_run(){
 			if(timer_flag[0] == 1){
 				status = RED_AMBER;
 				setTimer(1000,1);
-				setTimer(2000,0);
+				setTimer((count_buffer_root[2]+1)*1000,0);
 			}
 			if(isButtonPressed(1) == 1){
 				status = MAN_RED_GREEN;
@@ -100,7 +100,7 @@ void automatic_run(){
 			}
 			if(timer_flag[0] == 1){
 				status = GREEN_RED;
-				setTimer(3000,0);
+				setTimer((count_buffer_root[1]+1)*1000,0);
 				setTimer(1000,1);
 			}
 			if(isButtonPressed(1) == 1){

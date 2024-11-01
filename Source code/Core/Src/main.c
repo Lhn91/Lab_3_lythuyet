@@ -100,6 +100,7 @@ setTimer(40,2);
   {
 	  automatic_run();
 	  manual_run();
+	  setting_run();
 	  //display7seg2_digit();
     /* USER CODE END WHILE */
 
@@ -215,8 +216,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, R_Pin|G_Pin|Y_Pin|EN0_Pin
-                          |EN1_Pin|EN2_Pin|EN3_Pin|R1_Pin
-                          |G1_Pin|Y1_Pin, GPIO_PIN_RESET);
+                          |EN1_Pin|R1_Pin|G1_Pin|Y1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : button_Pin */
   GPIO_InitStruct.Pin = button_Pin;
@@ -238,18 +238,16 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : R_Pin G_Pin Y_Pin EN0_Pin
-                           EN1_Pin EN2_Pin EN3_Pin R1_Pin
-                           G1_Pin Y1_Pin */
+                           EN1_Pin R1_Pin G1_Pin Y1_Pin */
   GPIO_InitStruct.Pin = R_Pin|G_Pin|Y_Pin|EN0_Pin
-                          |EN1_Pin|EN2_Pin|EN3_Pin|R1_Pin
-                          |G1_Pin|Y1_Pin;
+                          |EN1_Pin|R1_Pin|G1_Pin|Y1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : b1_Pin b2_Pin */
-  GPIO_InitStruct.Pin = b1_Pin|b2_Pin;
+  /*Configure GPIO pins : b3_Pin b1_Pin b2_Pin */
+  GPIO_InitStruct.Pin = b3_Pin|b1_Pin|b2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
