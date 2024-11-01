@@ -20,10 +20,9 @@
 #define MAN_RED_GREEN 14
 #define MAN_RED_AMBER 15
 
-#define SETTING_GREEN_RED 22
-#define SETTING_AMBER_RED 23
-#define SETTING_RED_GREEN 24
-#define SETTING_RED_AMBER 25
+#define SETTING_GREEN 22
+#define SETTING_AMBER 23
+
 
 #include "main.h"
 #include "software_timer.h"
@@ -31,14 +30,8 @@
 #include "seven_seg.h"
 #include "automatic.h"
 #include "manual.h"
-
+#include "setting.h"
 extern int status;
-extern int count_green ;
 
-extern int count_red1;
-extern int count_green1;
-extern int count_amber1;
-extern int count_red2;
-extern int count_green2;
-extern int count_amber2;
+extern int count_buffer_root[6];
 #endif /* INC_GLOBAL_H_ */

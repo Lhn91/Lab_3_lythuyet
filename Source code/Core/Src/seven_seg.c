@@ -5,6 +5,42 @@
  *      Author: 84859
  */
 #include "seven_seg.h"
+int state = 1;
+void display7seg2_digit2(int num){
+	if(state){
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
+		display7seg2(num%10);
+	}
+	if(!state){
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
+
+		display7seg2(num/10);
+		}
+	if (timer_flag[2] == 1){
+		state = !state;
+		setTimer(40, 2);
+	}
+}
+void display7seg2_digit(int num){
+	if(state){
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
+		display7seg(num%10);
+	}
+	if(!state){
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
+
+		display7seg(num/10);
+		}
+	if (timer_flag[2] == 1){
+		state = !state;
+		setTimer(40, 2);
+	}
+}
+
 void display7seg(int num){
 	switch(num){
 		 case 0:

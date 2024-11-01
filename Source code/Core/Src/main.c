@@ -95,10 +95,12 @@ HAL_TIM_Base_Start_IT(&htim2);
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+setTimer(40,2);
   while (1)
   {
 	  automatic_run();
 	  manual_run();
+	  //display7seg2_digit();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -212,7 +214,8 @@ static void MX_GPIO_Init(void)
                           |S13_Pin|S14_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, R_Pin|G_Pin|Y_Pin|R1_Pin
+  HAL_GPIO_WritePin(GPIOB, R_Pin|G_Pin|Y_Pin|EN0_Pin
+                          |EN1_Pin|EN2_Pin|EN3_Pin|R1_Pin
                           |G1_Pin|Y1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : button_Pin */
@@ -234,9 +237,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : R_Pin G_Pin Y_Pin R1_Pin
+  /*Configure GPIO pins : R_Pin G_Pin Y_Pin EN0_Pin
+                           EN1_Pin EN2_Pin EN3_Pin R1_Pin
                            G1_Pin Y1_Pin */
-  GPIO_InitStruct.Pin = R_Pin|G_Pin|Y_Pin|R1_Pin
+  GPIO_InitStruct.Pin = R_Pin|G_Pin|Y_Pin|EN0_Pin
+                          |EN1_Pin|EN2_Pin|EN3_Pin|R1_Pin
                           |G1_Pin|Y1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;

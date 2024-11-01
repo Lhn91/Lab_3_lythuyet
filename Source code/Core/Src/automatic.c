@@ -6,12 +6,9 @@
  */
 #include "automatic.h"
 int status = INIT;
-int count_red1 = 4;
-int count_green1 = 2;
-int count_amber1 = 1;
-int count_red2 = 4;
-int count_green2 = 2;
-int count_amber2 =1;
+int count_buffer_root[6] = {4,2,1,4,2,1};
+int count_buffer[6] = {4,2,1,4,2,1};
+int array0[6] ={0,0,0,0,0,0};
 void init_automatic(){
 
 }
@@ -20,24 +17,24 @@ void automatic_run(){
 	case INIT:
 		if(1){
 		status = GREEN_RED;
+		setTimer(1000,1);
 		setTimer(3000,0);
-		timer_flag[1] = 1;
 		}
 	break;
 
 	case GREEN_RED:
 		traffic_green_red();
-		if(timer_flag[1] == 1 && timer_flag[0] == 0){
+		display7seg2_digit(count_buffer[1]);
+		display7seg2_digit2(count_buffer[3]);
+				if(timer_flag[1] == 1 ){
 			//update display (7seg)
-			display7seg(count_green1);
-			display7seg2(count_red2);
-			count_green1--;
-			count_red2--;
+					count_buffer[1]--;
+					count_buffer[3]--;
 			setTimer(1000,1);
 		}
 		if(timer_flag[0] == 1){
 			status = AMBER_RED;
-			timer_flag[1] = 1;
+			setTimer(1000,1);
 			setTimer(2000,0);
 		}
 		if(isButtonPressed(1) == 1){
@@ -50,17 +47,17 @@ void automatic_run(){
 
 	case AMBER_RED:
 			traffic_amber_red();
-			if(timer_flag[1] == 1 && timer_flag[0] == 0){
+			display7seg2_digit(count_buffer[2]);
+			display7seg2_digit2(count_buffer[3]);
+			if(timer_flag[1] == 1 ){
 				//update display (7seg)
-				display7seg(count_amber1);
-			    display7seg2(count_red2);
-			    count_amber1--;
-			    count_red2--;
+				count_buffer[2]--;
+				count_buffer[3]--;
 				setTimer(1000,1);
 			}
 			if(timer_flag[0] == 1){
 				status = RED_GREEN;
-				timer_flag[1] = 1;
+				setTimer(1000,1);
 				setTimer(3000,0);
 			}
 			if(isButtonPressed(1) == 1){
@@ -72,17 +69,17 @@ void automatic_run(){
 	case RED_GREEN:
 
 			traffic_red_green();
-			if(timer_flag[1] == 1&& timer_flag[0] == 0){
+			display7seg2_digit(count_buffer[0]);
+			display7seg2_digit2(count_buffer[4]);
+			if(timer_flag[1] == 1){
 				//update display (7seg)
-				display7seg(count_red1);
-				display7seg2(count_green2);
-				count_red1--;
-				count_green2--;
+				count_buffer[0]--;
+				count_buffer[4]--;
 				setTimer(1000,1);
 			}
 			if(timer_flag[0] == 1){
 				status = RED_AMBER;
-				timer_flag[1] = 1;
+				setTimer(1000,1);
 				setTimer(2000,0);
 			}
 			if(isButtonPressed(1) == 1){
@@ -93,18 +90,18 @@ void automatic_run(){
 
 	case RED_AMBER:
 			traffic_red_amber();
-			if(timer_flag[1] == 1&& timer_flag[0] == 0){
+			display7seg2_digit(count_buffer[0]);
+			display7seg2_digit2(count_buffer[5]);
+			if(timer_flag[1] == 1 ){
 				//update display (7seg)
-				display7seg(count_red1);
-				display7seg2(count_amber2);
-				count_red1--;
-				count_amber2--;
+				count_buffer[0]--;
+				count_buffer[5]--;
 				setTimer(1000,1);
 			}
 			if(timer_flag[0] == 1){
 				status = GREEN_RED;
-				timer_flag[1] = 1;
 				setTimer(3000,0);
+				setTimer(1000,1);
 			}
 			if(isButtonPressed(1) == 1){
 				status = MAN_RED_AMBER;
@@ -117,14 +114,10 @@ void automatic_run(){
 		break;
 	}
 
-	if (count_red1 < 0 && count_green1 < 0 && count_amber1 < 0 &&
-	    count_red2 < 0 && count_green2 < 0 && count_amber2 < 0) {
-	    count_red1 = 4;
-	    count_green1 = 2;
-	    count_amber1 = 1;
-	    count_red2 = 4;
-	    count_green2 = 2;
-	    count_amber2 = 1;
+	if (count_buffer[0] < 0 ) {
+		for(int i = 0; i < sizeof(count_buffer_root) /sizeof(count_buffer_root[0]); i++ ){
+			count_buffer[i] = count_buffer_root[i];
+		}
 	}
 
 }

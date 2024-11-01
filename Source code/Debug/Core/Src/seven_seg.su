@@ -1,2 +1,4 @@
-../Core/Src/seven_seg.c:8:6:display7seg	16	static
-../Core/Src/seven_seg.c:129:6:display7seg2	16	static
+../Core/Src/seven_seg.c:9:6:display7seg2_digit2	16	static
+../Core/Src/seven_seg.c:26:6:display7seg2_digit	16	static
+../Core/Src/seven_seg.c:44:6:display7seg	16	static
+../Core/Src/seven_seg.c:165:6:display7seg2	16	static

@@ -26,7 +26,7 @@ Core/Src/automatic.o: ../Core/Src/automatic.c ../Core/Inc/automatic.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Core/Inc/software_timer.h ../Core/Inc/button.h \
  ../Core/Inc/seven_seg.h ../Core/Inc/automatic.h ../Core/Inc/manual.h \
- ../Core/Inc/traffic_led.h
+ ../Core/Inc/traffic_led.h ../Core/Inc/setting.h
 ../Core/Inc/automatic.h:
 ../Core/Inc/global.h:
 ../Core/Inc/main.h:
@@ -60,3 +60,4 @@ Core/Src/automatic.o: ../Core/Src/automatic.c ../Core/Inc/automatic.h \
 ../Core/Inc/automatic.h:
 ../Core/Inc/manual.h:
 ../Core/Inc/traffic_led.h:
+../Core/Inc/setting.h:

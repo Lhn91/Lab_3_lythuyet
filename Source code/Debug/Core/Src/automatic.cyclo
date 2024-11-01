@@ -1,2 +1,2 @@
-../Core/Src/automatic.c:15:6:init_automatic	1
-../Core/Src/automatic.c:18:6:automatic_run	28
+../Core/Src/automatic.c:12:6:init_automatic	1
+../Core/Src/automatic.c:15:6:automatic_run	20
