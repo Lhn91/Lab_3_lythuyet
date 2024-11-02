@@ -15,7 +15,8 @@ void setting_run(){
 			if((count_buffer_root[1] + count_buffer_root[2])<100 ){
 				count_buffer_root[1] +=1;
 				count_buffer_root[4] +=1;
-			}else if(count_buffer_root[1] == 98){
+			}
+			if(count_buffer_root[1] == 98){
 				count_buffer_root[1] = 1;
 				count_buffer_root[4] = 1;
 			}
@@ -29,9 +30,10 @@ void setting_run(){
 				count_buffer_root[1] -=1;
 				count_buffer_root[4] -=1;
 			}
-			else {
-			count_buffer_root[1] =1;
-			count_buffer_root[4] = 1;}
+			else if(count_buffer_root[2]==1){
+			count_buffer_root[1] = 97;
+			count_buffer_root[4] = 97;
+			}
 		}
 		if(isButtonPressed(4)){
 			count_buffer_root[0] = count_buffer_root[3] = count_buffer_root[1] + count_buffer_root[2] + 1;
@@ -52,7 +54,8 @@ void setting_run(){
 					if((count_buffer_root[1] + count_buffer_root[2])<100 ){
 						count_buffer_root[2] +=1;
 						count_buffer_root[5] +=1;
-					}else if(count_buffer_root[1] == 98){
+					}
+					if(count_buffer_root[2] == 98){
 						count_buffer_root[2] = 1;
 						count_buffer_root[5] = 1;
 					}
@@ -66,9 +69,10 @@ void setting_run(){
 						count_buffer_root[2] -=1;
 						count_buffer_root[5] -=1;
 					}
-					else {
-					count_buffer_root[2] = 1;
-					count_buffer_root[5] = 1;}
+					else if(count_buffer_root[1] == 1){
+						count_buffer_root[2] = 97;
+						count_buffer_root[5] = 97;
+					}
 				}
 				if(isButtonPressed(4)){
 					count_buffer_root[0] = count_buffer_root[3] = count_buffer_root[1] + count_buffer_root[2]+1;
